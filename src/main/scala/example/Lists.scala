@@ -49,13 +49,10 @@ object Lists:
     */
   def max(xs: List[Int]): Int = {
     xs match {
-      case Nil          => throw new java.util.NoSuchElementException()
-      case List(_)      => xs.head
-      case head :: tail => higher(xs.head, max(xs.tail))
+      case Nil       => throw new java.util.NoSuchElementException()
+      case List(x)   => x
+      case x :: tail => higher(x, max(tail))
     }
   }
 
-  def higher(a: Int, b: Int): Int = {
-    if (a > b) return a;
-    return b;
-  }
+  def higher(a: Int, b: Int): Int = if (a > b) a else b
